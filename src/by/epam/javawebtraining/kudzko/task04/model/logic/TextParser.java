@@ -1,11 +1,8 @@
 package by.epam.javawebtraining.kudzko.task04.model.logic;
 
-import by.epam.javawebtraining.kudzko.task04.inputdatacontroller.TextReader;
-import by.epam.javawebtraining.kudzko.task04.model.entity.ListingParagrahp;
-import by.epam.javawebtraining.kudzko.task04.model.entity.Paragrahp;
-import by.epam.javawebtraining.kudzko.task04.model.entity.Text;
-import by.epam.javawebtraining.kudzko.task04.model.entity.TextParagrahp;
-import by.epam.javawebtraining.kudzko.task04.util.TextElementCreator;
+import by.epam.javawebtraining.kudzko.task04.model.entity.*;
+import by.epam.javawebtraining.kudzko.task04.model.entity.exception.logicexception.MismatchTypesException;
+
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,32 +21,45 @@ public class TextParser implements ParseAble {
     }
 
     @Override
-    public void parse(String data, Text textInstance) {
+    public void parse(String data, TextElement textInstance){
+
+        System.out.println(getClass());
         Pattern pattern = Pattern.compile(PARAGRAPH_TAG);
         Matcher matcher = pattern.matcher(data);
         String[] paragraphs = pattern.split(data);
 
-
         int i = 0;
-        while (matcher.find()) {
+        while (i < paragraphs.length) {
 
-            i++;
-            Paragrahp paragrahp = createApropriareParagraph(paragraphs[i]);
-            paragrahp.addPunctuatoinElement(matcher.group());
-            textInstance.addElement(paragrahp);
 
-            if (parant != null) {
-               parant.parse(paragraphs[i], textInstance);
+            Paragraph paragraph = createApropriareParagraph(paragraphs[i]);
+            if (matcher.find()){
+                paragraph.addPunctuatoinElement(matcher.group());
             }
+
+            try {
+                textInstance.addElement(paragraph);
+            } catch (MismatchTypesException e) {
+                e.printStackTrace();
+            }
+
+            if (paragraph instanceof TextParagraph){
+                if (parant != null) {
+                    parant.parse(paragraphs[i], paragraph);
+                }
+            }else {
+                ((ListingParagraph) paragraph).setListing(paragraphs[i]);
+            }
+            i++;
         }
     }
 
-    private Paragrahp createApropriareParagraph(String paragraf) {
+    private Paragraph createApropriareParagraph(String paragraf) {
         if (KindConteinsChecker.analiseParagraph(paragraf)
                 == KindConteinsChecker.ParagraphType.TEXT) {
-            return new TextParagrahp();
+            return new TextParagraph();
         } else {
-            return  new ListingParagrahp();
+            return  new ListingParagraph();
         }
     }
 

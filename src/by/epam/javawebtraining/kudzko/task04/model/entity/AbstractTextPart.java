@@ -34,4 +34,8 @@ public class AbstractTextPart {
     public void setPunctuation(List<String> punctuation) {
         this.punctuation = punctuation;
     }
+
+
+
+
 }

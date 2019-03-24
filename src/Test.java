@@ -7,8 +7,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Test {
-    public static final String PARAGRAF_TAG = "(([.!?:]{1})|([\n]}\\s*[\n])" +
-        "|(;+\\s*[\n]))\\s*[\n]";
+    public static final String PARAGRAF_TAG ="(([.!?:]{1})|([\n]}\\s*[\n]))\\s*[\n]";
+
+//            "(([.!?:]{1})|([\n]}\\s*[\n])" +
+//        "|(;+\\s*[\n]))\\s*[\n]";
 
     public static void main(String[] args) {
 
@@ -26,7 +28,6 @@ public class Test {
 
 
         Matcher matcher = pattern.matcher(text);
-/*
         int count = 0;
         while (matcher.find()) {
             System.out.println(matcher.group());
@@ -34,7 +35,6 @@ public class Test {
             count++;
         }
         System.out.println(count);
-*/
         String[] result = pattern.split(text);
 /*
         for (int i = 0; i < result.length; i++) {

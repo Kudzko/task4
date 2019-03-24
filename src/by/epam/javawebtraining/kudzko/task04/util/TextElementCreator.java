@@ -27,11 +27,11 @@ public class TextElementCreator {
             case TEXT:
                 return new Text();
             case PARAGRAPH:
-                return new Paragrahp();
+                return new Paragraph();
             case TEXT_PARAGRAPH:
-                return new TextParagrahp();
+                return new TextParagraph();
             case LISTING_PARAGRAPH:
-                return new ListingParagrahp();
+                return new ListingParagraph();
             case SENTENCE:
                 return new Sentence();
             default:
