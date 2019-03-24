@@ -2,16 +2,18 @@ package by.epam.javawebtraining.kudzko.task04.model.logic;
 
 import by.epam.javawebtraining.kudzko.task04.model.entity.Text;
 
-public class SentenceParser implements ParseAble {
-    String messege;
+public class ParagraphParser implements ParseAble {
 
-    public SentenceParser() {
-        this.messege = messege;
+    SentenceParser root;
+
+    public ParagraphParser(SentenceParser root) {
+        this.root = root;
     }
 
 
     @Override
     public void parse(String data, Text textInstance) {
+        
 
 
 

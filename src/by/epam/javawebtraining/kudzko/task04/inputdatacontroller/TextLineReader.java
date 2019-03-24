@@ -9,12 +9,12 @@ public class TextLineReader implements FileReadable {
     @Override
     public String readTxtFile(String path) {
         StringBuilder outputString = new StringBuilder();
-        BufferedReader bufferedReader = null;
+       // BufferedReader bufferedReader = null;
 
 
-        try {
-            bufferedReader = new BufferedReader(new FileReader
-                    (path));
+        try (BufferedReader  bufferedReader = new BufferedReader(new FileReader
+                (path))){
+
             String tempString;
 
             while ((tempString = bufferedReader.readLine()) != null) {
@@ -25,12 +25,6 @@ public class TextLineReader implements FileReadable {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                bufferedReader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
 
         return outputString.toString();
