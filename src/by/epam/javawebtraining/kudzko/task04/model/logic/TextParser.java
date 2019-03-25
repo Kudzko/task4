@@ -23,7 +23,6 @@ public class TextParser implements ParseAble {
     @Override
     public void parse(String data, TextElement textInstance){
 
-        System.out.println(getClass());
         Pattern pattern = Pattern.compile(PARAGRAPH_TAG);
         Matcher matcher = pattern.matcher(data);
         String[] paragraphs = pattern.split(data);
@@ -31,10 +30,9 @@ public class TextParser implements ParseAble {
         int i = 0;
         while (i < paragraphs.length) {
 
-
             Paragraph paragraph = createApropriareParagraph(paragraphs[i]);
             if (matcher.find()){
-                paragraph.addPunctuatoinElement(matcher.group());
+                ((Text)textInstance).addPunctuatoinElement(matcher.group());
             }
 
             try {

@@ -37,5 +37,17 @@ public class AbstractTextPart {
 
 
 
+    public String toAbstractString(List<? extends AbstractTextPart> listTextParts) {
+        StringBuilder stringBuilder = new StringBuilder();
 
+        for (int i = 0; i < listTextParts.size(); i++) {
+            stringBuilder.append(listTextParts.get(i));
+            List<String> punctuation = getPunctuation();
+
+            if (i < punctuation.size()) {
+                stringBuilder.append(punctuation.get(i));
+            }
+        }
+        return stringBuilder.toString();
+    }
 }

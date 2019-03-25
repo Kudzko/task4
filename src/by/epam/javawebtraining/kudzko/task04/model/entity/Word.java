@@ -47,8 +47,6 @@ public class Word extends AbstractTextPart implements TextElement {
 
     @Override
     public String toString() {
-        return WordConst.CLASSNAME + "{" +
-                WordConst.WORD+"='" + word + '\'' +
-                '}';
+        return word;
     }
 }

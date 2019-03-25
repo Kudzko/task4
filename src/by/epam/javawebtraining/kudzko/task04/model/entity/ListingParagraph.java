@@ -38,8 +38,6 @@ public class ListingParagraph extends Paragraph {
 
     @Override
     public String toString() {
-        return "ListingParagraph{" +
-                "listing='" + listing + '\'' +
-                '}';
+        return listing;
     }
 }

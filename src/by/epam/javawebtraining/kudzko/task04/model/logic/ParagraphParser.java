@@ -20,8 +20,6 @@ public class ParagraphParser implements ParseAble {
     @Override
     public void parse(String data, TextElement paragraph) {
 
-        System.out.println(getClass());
-
         Pattern pattern = Pattern.compile(SENTENCE_TAG);
         Matcher matcher = pattern.matcher(data);
         String[] sentences = pattern.split(data);
@@ -31,7 +29,7 @@ public class ParagraphParser implements ParseAble {
 
             Sentence sentence = new Sentence();
             if (matcher.find()){
-                sentence.addPunctuatoinElement(matcher.group());
+                ((Paragraph)paragraph).addPunctuatoinElement(matcher.group());
             }
 
             try {
@@ -39,6 +37,7 @@ public class ParagraphParser implements ParseAble {
             } catch (MismatchTypesException e) {
                 e.printStackTrace();
             }
+
             if (root != null) {
                 root.parse(sentences[i], sentence);
             }

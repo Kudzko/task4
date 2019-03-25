@@ -57,8 +57,7 @@ public class Text extends  AbstractTextPart implements TextElement{
 
     @Override
     public String toString() {
-        return "Text{" +
-                "paragraphs=" + paragraphs +
-                '}';
+
+        return toAbstractString(paragraphs);
     }
 }

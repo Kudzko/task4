@@ -68,8 +68,18 @@ public class Sentence extends AbstractTextPart implements TextElement {
 
     @Override
     public String toString() {
-        return "Sentence{" +
-                "wordList=" + wordList +
-                '}';
+      /*  StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < wordList.size(); i++) {
+            stringBuilder.append(wordList.get(i));
+            List<String> punctuation = getPunctuation();
+
+            if (i < punctuation.size()){
+                stringBuilder.append(punctuation.get(i));
+            }
+        }
+
+        return stringBuilder.toString();*/
+        return toAbstractString(wordList);
     }
 }

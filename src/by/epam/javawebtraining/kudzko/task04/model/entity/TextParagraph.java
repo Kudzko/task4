@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class TextParagraph extends Paragraph {
 
-    private List<Sentence> sentences;
+    private List<Sentence > sentences;
 
     public TextParagraph() {
         sentences = new ArrayList<>();
@@ -43,8 +43,19 @@ public class TextParagraph extends Paragraph {
 
     @Override
     public String toString() {
-        return "TextParagraph{" +
-                "sentences=" + sentences +
-                '}';
+       /* StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < sentences.size(); i++) {
+            stringBuilder.append(sentences.get(i));
+            List<String> punctuation = getPunctuation();
+
+            if (i < punctuation.size()) {
+                stringBuilder.append(punctuation.get(i));
+            }
+        }
+
+        return stringBuilder.toString();
+        */
+       return toAbstractString(sentences);
     }
 }

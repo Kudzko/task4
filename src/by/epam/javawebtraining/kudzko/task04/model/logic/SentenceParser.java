@@ -16,8 +16,6 @@ public class SentenceParser implements ParseAble {
     @Override
     public void parse(String data, TextElement sentence) {
 
-        System.out.println(getClass());
-
         Pattern pattern = Pattern.compile(WORD_TAG);
         Matcher matcher = pattern.matcher(data);
         String[] words = pattern.split(data);
@@ -27,7 +25,7 @@ public class SentenceParser implements ParseAble {
 
             Word word = new Word();
             if (matcher.find()){
-                word.addPunctuatoinElement(matcher.group());
+                ((Sentence)sentence).addPunctuatoinElement(matcher.group());
             }
             word.setWord(words[i]);
             try {
