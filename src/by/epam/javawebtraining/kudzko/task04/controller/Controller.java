@@ -60,6 +60,5 @@ public class Controller {
         System.out.println("ShowSentencesByLength:\n" +
                 ShowSentencesByLength
                 .showSentencesIncreaseLength(textInstance));
-
     }
 }

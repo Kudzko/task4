@@ -6,33 +6,29 @@ import by.epam.javawebtraining.kudzko.task04.model.entity.Text;
 
 import java.util.*;
 
-public class ShowSentencesByLength extends AbstractOperation{
+public class ShowSentencesByLength extends AbstractOperation {
 
     public static String showSentencesIncreaseLength(Text text) {
 
-        List<Sentence> sentences = getAllSentences(text);
         Comparator<Sentence> comparator = new IncreaseSentenceLength();
-        sentences.sort(comparator);
-        StringBuilder stringBuilder = new StringBuilder();
 
-        for (int i = 0; i < sentences.size(); i++){
-            stringBuilder.append("Sentence " + i + ":\n");
-            stringBuilder.append(sentences.get(i));
-            stringBuilder.append("\n");
-
-        }
-
-        return stringBuilder.toString();
+        return sortSentences(text, comparator);
     }
 
     public static String showSentencesDecreaseLength(Text text) {
 
+              Comparator<Sentence> comparator = new DecreaseSentenceLength();
+
+        return sortSentences(text, comparator);
+    }
+
+    private static String sortSentences(Text text, Comparator<Sentence>
+            comparator) {
         List<Sentence> sentences = getAllSentences(text);
-        Comparator<Sentence> comparator = new DecreaseSentenceLength();
         sentences.sort(comparator);
         StringBuilder stringBuilder = new StringBuilder();
 
-        for (int i = 0; i < sentences.size(); i++){
+        for (int i = 0; i < sentences.size(); i++) {
             stringBuilder.append("Sentence " + i + ":\n");
             stringBuilder.append(sentences.get(i));
             stringBuilder.append("\n");
