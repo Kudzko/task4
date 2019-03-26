@@ -4,12 +4,13 @@ import by.epam.javawebtraining.kudzko.task04.model.entity.*;
 import by.epam.javawebtraining.kudzko.task04.model.entity.exception.logicexception.MismatchTypesException;
 import by.epam.javawebtraining.kudzko.task04.model.logic.parser.ParseAble;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SentenceParser implements ParseAble {
     private static SentenceParser sentenceParser;
-    public static final String WORD_TAG = "([ ]|([,;] )) ";
+    public static final String WORD_TAG = "(([ ])|([,;] )|([\n]))";
 
     private SentenceParser() {
 
@@ -24,7 +25,6 @@ public class SentenceParser implements ParseAble {
 
     @Override
     public void parse(String data, TextElement sentence) {
-
         Pattern pattern = Pattern.compile(WORD_TAG);
         Matcher matcher = pattern.matcher(data);
         String[] words = pattern.split(data);

@@ -2,7 +2,8 @@ package by.epam.javawebtraining.kudzko.task04.controller;
 
 import by.epam.javawebtraining.kudzko.task04.inputdatacontroller.TextReader;
 import by.epam.javawebtraining.kudzko.task04.model.entity.Text;
-import by.epam.javawebtraining.kudzko.task04.model.logic.busness.ShowSentencesByLength;
+import by.epam.javawebtraining.kudzko.task04.model.logic.operation.AmountSentencesWithSameWords;
+import by.epam.javawebtraining.kudzko.task04.model.logic.operation.ShowSentencesByLength;
 import by.epam.javawebtraining.kudzko.task04.model.logic.parser.ParagraphParser;
 import by.epam.javawebtraining.kudzko.task04.model.logic.parser.SentenceParser;
 import by.epam.javawebtraining.kudzko.task04.model.logic.parser.TextParser;
@@ -48,6 +49,17 @@ public class Controller {
 
         System.out.println(ShowSentencesByLength.showSentencesIncreaseLength
                 (textInstance));
+
+        System.out.println(ShowSentencesByLength.showSentencesDecreaseLength
+                (textInstance));
+
+        System.out.println("AmountSentencesWithSameWords: " +
+                AmountSentencesWithSameWords
+                .countSentencesWithEqualsWords(textInstance));
+
+        System.out.println("ShowSentencesByLength:\n" +
+                ShowSentencesByLength
+                .showSentencesIncreaseLength(textInstance));
 
     }
 }
