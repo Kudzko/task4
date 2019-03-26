@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class TextParagraph extends Paragraph {
 
-    private List<Sentence > sentences;
+    private List<Sentence> sentences;
 
     public TextParagraph() {
         sentences = new ArrayList<>();
@@ -22,15 +22,37 @@ public class TextParagraph extends Paragraph {
         this.sentences = sentences;
     }
 
+
+    @Override
     public void addElement(TextElement element) throws MismatchTypesException {
-        sentences.add((Sentence) element);
+        if (element instanceof Sentence) {
+            sentences.add((Sentence) element);
+        } else {
+            throw new MismatchTypesException("Is not appropriate type to  " +
+                    "add. Element should has type Sentence.");
+        }
+
 
     }
 
     @Override
+    public Object getChild(int index) {
+        return sentences.get(index);
+    }
+
+    @Override
+    public int getAmountElements() {
+        return sentences.size();
+    }
+
+    public List<Sentence> getSentences() {
+        return sentences;
+    }
+
+    @Override
     public boolean equals(Object o) {
+        if ((o == null) || (o.getClass() != this.getClass())) return false;
         if (this == o) return true;
-        if (!(o instanceof TextParagraph)) return false;
         TextParagraph that = (TextParagraph) o;
         return Objects.equals(sentences, that.sentences);
     }
@@ -43,19 +65,7 @@ public class TextParagraph extends Paragraph {
 
     @Override
     public String toString() {
-       /* StringBuilder stringBuilder = new StringBuilder();
 
-        for (int i = 0; i < sentences.size(); i++) {
-            stringBuilder.append(sentences.get(i));
-            List<String> punctuation = getPunctuation();
-
-            if (i < punctuation.size()) {
-                stringBuilder.append(punctuation.get(i));
-            }
-        }
-
-        return stringBuilder.toString();
-        */
-       return toAbstractString(sentences);
+        return toAbstractString(sentences);
     }
 }

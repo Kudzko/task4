@@ -1,5 +1,7 @@
 package by.epam.javawebtraining.kudzko.task04.model.entity;
 
+import by.epam.javawebtraining.kudzko.task04.model.entity.exception.logicexception.MismatchTypesException;
+
 import java.util.Objects;
 
 public class ListingParagraph extends Paragraph {
@@ -21,11 +23,27 @@ public class ListingParagraph extends Paragraph {
         this.listing = listing;
     }
 
+
+
+    @Override
+    public void addElement(TextElement element) throws MismatchTypesException {
+//log
+    }
+
+    @Override
+    public Object getChild(int index) {
+        return listing;
+    }
+
+    @Override
+    public int getAmountElements() {
+        return -1;
+    }
+
     @Override
     public boolean equals(Object o) {
+        if ((o == null)|| (o.getClass() != this.getClass())) return false;
         if (this == o) return true;
-        if (!(o instanceof ListingParagraph)) return false;
-        if (!super.equals(o)) return false;
         ListingParagraph that = (ListingParagraph) o;
         return Objects.equals(listing, that.listing);
     }
@@ -33,7 +51,7 @@ public class ListingParagraph extends Paragraph {
     @Override
     public int hashCode() {
 
-        return Objects.hash(super.hashCode(), listing);
+        return Objects.hash(listing);
     }
 
     @Override

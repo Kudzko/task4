@@ -1,7 +1,10 @@
-package by.epam.javawebtraining.kudzko.task04.model.logic;
+package by.epam.javawebtraining.kudzko.task04.model.logic.parser;
 
 import by.epam.javawebtraining.kudzko.task04.model.entity.*;
 import by.epam.javawebtraining.kudzko.task04.model.entity.exception.logicexception.MismatchTypesException;
+import by.epam.javawebtraining.kudzko.task04.model.logic.parser.KindConteinsChecker;
+import by.epam.javawebtraining.kudzko.task04.model.logic.parser.ParagraphParser;
+import by.epam.javawebtraining.kudzko.task04.model.logic.parser.ParseAble;
 
 
 import java.util.regex.Matcher;
@@ -9,16 +12,26 @@ import java.util.regex.Pattern;
 
 public class TextParser implements ParseAble {
 
+    private static TextParser textParser;
+
     public static final String PARAGRAPH_TAG = "(([.!?:]{1})|([\n]}\\s*[\n]))\\s*[\n]";
     //("\\s*.*// ([(){};," +"+-=&\"\']+)\\s*[\n]");
 
     private ParagraphParser parant;
     // private String  message;
 
-    public TextParser(ParagraphParser parant) {
+    private TextParser(ParagraphParser parant) {
         this.parant = parant;
         //    this.message = message;
     }
+
+    public static TextParser getTexParser(ParagraphParser parant){
+        if (textParser == null){
+            textParser = new TextParser(parant);
+        }
+        return textParser;
+    }
+
 
     @Override
     public void parse(String data, TextElement textInstance){

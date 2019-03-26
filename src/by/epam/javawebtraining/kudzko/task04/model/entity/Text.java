@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Text extends  AbstractTextPart implements TextElement{
+public class Text extends AbstractTextPart implements TextElement {
 
     List<Paragraph> paragraphs;
 
@@ -21,9 +21,9 @@ public class Text extends  AbstractTextPart implements TextElement{
 
     @Override
     public void addElement(TextElement element) throws MismatchTypesException {
-        if (element instanceof Paragraph){
-            paragraphs.add((Paragraph)element);
-        }else {
+        if (element instanceof Paragraph) {
+            paragraphs.add((Paragraph) element);
+        } else {
             throw new MismatchTypesException("Is not appropriate type " +
                     "adding. Element should has type Paragraph.");
         }
@@ -41,10 +41,14 @@ public class Text extends  AbstractTextPart implements TextElement{
         return paragraphs.size();
     }
 
+    public List<Paragraph> getParagraphs() {
+        return paragraphs;
+    }
+
     @Override
     public boolean equals(Object o) {
+        if ((o == null) || (o.getClass() != this.getClass())) return false;
         if (this == o) return true;
-        if (!(o instanceof Text)) return false;
         Text text = (Text) o;
         return Objects.equals(paragraphs, text.paragraphs);
     }

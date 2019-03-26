@@ -1,4 +1,4 @@
-package by.epam.javawebtraining.kudzko.task04.model.logic;
+package by.epam.javawebtraining.kudzko.task04.model.logic.parser;
 
 import by.epam.javawebtraining.kudzko.task04.model.entity.Text;
 import by.epam.javawebtraining.kudzko.task04.model.entity.TextElement;

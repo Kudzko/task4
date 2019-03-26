@@ -1,10 +1,11 @@
-import by.epam.javawebtraining.kudzko.task04.inputdatacontroller.FileByteReader;
-import by.epam.javawebtraining.kudzko.task04.inputdatacontroller.TextReader;
-import by.epam.javawebtraining.kudzko.task04.model.logic.KindConteinsChecker;
+import by.epam.javawebtraining.kudzko.task04.model.entity.Sentence;
+import by.epam.javawebtraining.kudzko.task04.model.entity.Word;
+import by.epam.javawebtraining.kudzko.task04.model.entity.exception.logicexception.MismatchTypesException;
 
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Test {
     public static final String PARAGRAF_TAG ="(([.!?:]{1})|([\n]}\\s*[\n]))\\s*[\n]";
@@ -15,41 +16,40 @@ public class Test {
     public static void main(String[] args) {
 
 
-        TextReader textReader = new TextReader();
-        FileByteReader textReader2 = new FileByteReader();
+        Sentence sentence1 = new Sentence();
+        Sentence sentence2 = new Sentence();
+        Sentence sentence3 = new Sentence();
+        Sentence sentence4 = sentence1;
 
-        String text = textReader.readTxtFile
-                ("F:\\git_rep\\task4\\src\\by\\epam\\javawebtraining\\kudzko" +
-                        "\\task04\\inputdatacontroller\\testText.txt");
+        Word word1 = new Word();
+        word1.setWord("Test1");
+        Word word2 = new Word();
+        word2.setWord("Test2");
+        Word word3 = new Word();
+        word3.setWord("Test1");
 
+        try {
+            sentence1.addElement(word1);
+            sentence2.addElement(word2);
+            sentence3.addElement(word3);
 
-       Pattern pattern = Pattern.compile(PARAGRAF_TAG);
-        //("\\s*.*// ([(){};," +"+-=&\"\']+)\\s*[\n]");
-
-
-        Matcher matcher = pattern.matcher(text);
-        int count = 0;
-        while (matcher.find()) {
-            System.out.println(matcher.group());
-            System.out.println("-----------------");
-            count++;
+        } catch (MismatchTypesException e) {
+            e.printStackTrace();
         }
-        System.out.println(count);
-        String[] result = pattern.split(text);
-/*
-        for (int i = 0; i < result.length; i++) {
-            System.out.println(result[i]);
-            System.out.println("-----------------");
-        }
+
+      /*  System.out.println(word1.equals(word3));
+        System.out.println(sentence1.equals(sentence2));
+        System.out.println(sentence1.equals(sentence3));
+        System.out.println(sentence1.equals(sentence4));
 */
 
 
-String[] paragraphs = pattern.split(text);
-for (int i = 0; i < paragraphs.length; i++){
-    System.out.println(result[i]);
-    System.out.println(KindConteinsChecker.analiseParagraph(paragraphs[i]));
-    System.out.println("----------------------------");
-}
+        Map<Sentence, Integer> hashmap = new HashMap<>();
+
+        hashmap.put(sentence1,2 );
+        hashmap.put(sentence2,3 );
+        hashmap.put(sentence3,1 );
+
 
 
 

@@ -15,10 +15,6 @@ public class Sentence extends AbstractTextPart implements TextElement {
         wordList = new ArrayList<>();
     }
 
-    public Sentence(List<Word> wordList) {
-        this.wordList = wordList;
-    }
-
     public Sentence(List<String> punctuation, List<Word> wordList) {
         super(punctuation);
         this.wordList = wordList;
@@ -30,18 +26,18 @@ public class Sentence extends AbstractTextPart implements TextElement {
             wordList.add((Word) element);
         } else {
             throw new MismatchTypesException("Is not appropriate type " +
-                    "adding. Element should has type Sentence.");
+                    "to add. Element should has type Word.");
         }
     }
 
     @Override
     public Object getChild(int index) {
-        return null;
+        return wordList.get(index);
     }
 
     @Override
     public int getAmountElements() {
-        return 0;
+        return wordList.size();
     }
 
     public List<Word> getWordList() {
@@ -54,8 +50,8 @@ public class Sentence extends AbstractTextPart implements TextElement {
 
     @Override
     public boolean equals(Object o) {
+        if ((o == null) || (o.getClass() != this.getClass())) return false;
         if (this == o) return true;
-        if (!(o instanceof Sentence)) return false;
         Sentence sentence = (Sentence) o;
         return Objects.equals(wordList, sentence.wordList);
     }
@@ -68,18 +64,7 @@ public class Sentence extends AbstractTextPart implements TextElement {
 
     @Override
     public String toString() {
-      /*  StringBuilder stringBuilder = new StringBuilder();
 
-        for (int i = 0; i < wordList.size(); i++) {
-            stringBuilder.append(wordList.get(i));
-            List<String> punctuation = getPunctuation();
-
-            if (i < punctuation.size()){
-                stringBuilder.append(punctuation.get(i));
-            }
-        }
-
-        return stringBuilder.toString();*/
         return toAbstractString(wordList);
     }
 }

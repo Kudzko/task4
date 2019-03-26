@@ -1,21 +1,29 @@
-package by.epam.javawebtraining.kudzko.task04.model.logic;
+package by.epam.javawebtraining.kudzko.task04.model.logic.parser;
 
 import by.epam.javawebtraining.kudzko.task04.model.entity.*;
 import by.epam.javawebtraining.kudzko.task04.model.entity.exception.logicexception.MismatchTypesException;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ParagraphParser implements ParseAble {
+
+    private static ParagraphParser paragraphParser;
+
     public static final String SENTENCE_TAG = "[.!?] ";
 
     private SentenceParser root;
 
-    public ParagraphParser(SentenceParser root) {
+    private ParagraphParser(SentenceParser root) {
         this.root = root;
     }
 
+    public static ParagraphParser getParagraphParser(SentenceParser root){
+        if (paragraphParser == null) {
+            paragraphParser = new ParagraphParser(root);
+        }
+        return paragraphParser;
+    }
 
     @Override
     public void parse(String data, TextElement paragraph) {

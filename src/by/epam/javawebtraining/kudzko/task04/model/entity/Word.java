@@ -11,16 +11,17 @@ public class Word extends AbstractTextPart implements TextElement {
     @Override
     public void addElement(TextElement element) throws MismatchTypesException {
 
+//log
     }
 
     @Override
     public Object getChild(int index) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public int getAmountElements() {
-        return 0;
+        return -1;
     }
 
     public String getWord() {
@@ -33,10 +34,10 @@ public class Word extends AbstractTextPart implements TextElement {
 
     @Override
     public boolean equals(Object o) {
+        if ((o == null) || (o.getClass() != this.getClass())) return false;
         if (this == o) return true;
-        if (!(o instanceof Word)) return false;
         Word word1 = (Word) o;
-        return Objects.equals(word, word1.word);
+        return word.equals(((Word) o).word);
     }
 
     @Override

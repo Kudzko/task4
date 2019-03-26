@@ -1,4 +1,4 @@
-package by.epam.javawebtraining.kudzko.task04.model.logic;
+package by.epam.javawebtraining.kudzko.task04.model.logic.parser;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

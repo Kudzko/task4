@@ -6,7 +6,7 @@ import by.epam.javawebtraining.kudzko.task04.model.entity.*;
 public class TextElementCreator {
 
     public enum TextElementType {
-        TEXT, PARAGRAPH, TEXT_PARAGRAPH, LISTING_PARAGRAPH, SENTENCE, WORD;
+        TEXT, TEXT_PARAGRAPH, LISTING_PARAGRAPH, SENTENCE, WORD;
     }
 
     private static TextElementCreator textElementCreator;
@@ -26,8 +26,6 @@ public class TextElementCreator {
         switch (textElementType) {
             case TEXT:
                 return new Text();
-            case PARAGRAPH:
-                return new Paragraph();
             case TEXT_PARAGRAPH:
                 return new TextParagraph();
             case LISTING_PARAGRAPH:
