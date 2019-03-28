@@ -34,18 +34,18 @@ public class ParagraphParser implements ParseAble {
 
         int i = 0;
         while (i < sentences.length) {
-
+            //Create instance of sentence
             Sentence sentence = new Sentence();
             if (matcher.find()){
                 ((Paragraph)paragraph).addPunctuatoinElement(matcher.group());
             }
-
+            //punctuation is saved
             try {
                 paragraph.addElement(sentence);
             } catch (MismatchTypesException e) {
                 e.printStackTrace();
             }
-
+            // SentencesParser is called
             if (root != null) {
                 root.parse(sentences[i], sentence);
             }

@@ -1,4 +1,4 @@
-package by.epam.javawebtraining.kudzko.task04.inputdatacontroller;
+package by.epam.javawebtraining.kudzko.task04.inputdata;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

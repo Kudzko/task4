@@ -1,16 +1,15 @@
 package by.epam.javawebtraining.kudzko.task04.model.entity;
 
 import by.epam.javawebtraining.kudzko.task04.model.entity.exception.logicexception.MismatchTypesException;
-import by.epam.javawebtraining.kudzko.task04.model.entity.localconstants.WordConst;
 
 import java.util.Objects;
 
-public class Word extends AbstractTextPart implements TextElement {
+public class Word  implements TextElement {
     private String word;
 
     @Override
     public void addElement(TextElement element) throws MismatchTypesException {
-
+        throw new UnsupportedOperationException();
 //log
     }
 
@@ -37,7 +36,7 @@ public class Word extends AbstractTextPart implements TextElement {
         if ((o == null) || (o.getClass() != this.getClass())) return false;
         if (this == o) return true;
         Word word1 = (Word) o;
-        return word.equals(((Word) o).word);
+        return word.equals(word1.word);
     }
 
     @Override

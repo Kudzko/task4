@@ -17,7 +17,7 @@ public class ShowSentencesByLength extends AbstractOperation {
 
     public static String showSentencesDecreaseLength(Text text) {
 
-              Comparator<Sentence> comparator = new DecreaseSentenceLength();
+        Comparator<Sentence> comparator = new DecreaseSentenceLength();
 
         return sortSentences(text, comparator);
     }

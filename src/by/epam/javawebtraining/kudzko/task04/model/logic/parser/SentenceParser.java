@@ -2,9 +2,7 @@ package by.epam.javawebtraining.kudzko.task04.model.logic.parser;
 
 import by.epam.javawebtraining.kudzko.task04.model.entity.*;
 import by.epam.javawebtraining.kudzko.task04.model.entity.exception.logicexception.MismatchTypesException;
-import by.epam.javawebtraining.kudzko.task04.model.logic.parser.ParseAble;
 
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,6 +35,8 @@ public class SentenceParser implements ParseAble {
                 ((Sentence)sentence).addPunctuatoinElement(matcher.group());
             }
             word.setWord(words[i]);
+
+            //punctuation is saved
             try {
                 sentence.addElement(word);
             } catch (MismatchTypesException e) {

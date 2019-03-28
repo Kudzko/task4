@@ -1,6 +1,6 @@
 package by.epam.javawebtraining.kudzko.task04.controller;
 
-import by.epam.javawebtraining.kudzko.task04.inputdatacontroller.TextReader;
+import by.epam.javawebtraining.kudzko.task04.inputdata.TextReader;
 import by.epam.javawebtraining.kudzko.task04.model.entity.Text;
 import by.epam.javawebtraining.kudzko.task04.model.logic.operation.AmountSentencesWithSameWords;
 import by.epam.javawebtraining.kudzko.task04.model.logic.operation.ShowSentencesByLength;

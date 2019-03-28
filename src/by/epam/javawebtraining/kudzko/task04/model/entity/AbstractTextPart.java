@@ -36,8 +36,12 @@ public class AbstractTextPart {
     }
 
 
-
-    public String toAbstractString(List<? extends AbstractTextPart> listTextParts) {
+    /**
+     * Create String from elements of List<>
+     * @param listTextParts
+     * @return
+     */
+    public String toAbstractString(List<? extends TextElement> listTextParts) {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = 0; i < listTextParts.size(); i++) {
