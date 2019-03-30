@@ -14,7 +14,7 @@ public class AbstractOperation {
             Paragraph paragraph = (Paragraph) text.getChild(i);
             if (paragraph instanceof TextParagraph) {
                 TextParagraph textParagraph = (TextParagraph) paragraph;
-                sentences.addAll(textParagraph.getSentences());
+                sentences.addAll(textParagraph.getTextElements());
             }
 
         }
@@ -32,7 +32,7 @@ public class AbstractOperation {
 
                 for (int j = 0; j < textParagraph.getAmountElements(); j++) {
                     Sentence sentence = (Sentence) textParagraph.getChild(j);
-                    words.addAll(sentence.getWordList());
+                    words.addAll(sentence.getTextElements());
                 }
 
             }

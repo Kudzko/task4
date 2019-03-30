@@ -14,7 +14,7 @@ public class Word  implements TextElement {
     }
 
     @Override
-    public Object getChild(int index) {
+    public TextElement getChild(int index) {
         throw new UnsupportedOperationException();
     }
 

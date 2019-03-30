@@ -39,7 +39,7 @@ public class Controller {
         String text = textReader.readTxtFile(path);
         Text textInstance = new Text();
 
-        SentenceParser sentenceParser = SentenceParser.getSentenceParser();
+        SentenceParser sentenceParser = SentenceParser.getSentenceParser(null);
         ParagraphParser paragraphParser = ParagraphParser.getParagraphParser(sentenceParser);
         TextParser textParser = TextParser.getTexParser(paragraphParser);
 
@@ -55,7 +55,7 @@ public class Controller {
 
         System.out.println("AmountSentencesWithSameWords: " +
                 AmountSentencesWithSameWords
-                .countSentencesWithEqualsWords(textInstance));
+                .countSentencesWithEqualsWords(textInstance)+ "\n"   );
 
         System.out.println("ShowSentencesByLength:\n" +
                 ShowSentencesByLength

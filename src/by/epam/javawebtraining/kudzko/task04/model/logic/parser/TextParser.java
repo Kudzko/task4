@@ -15,18 +15,18 @@ public class TextParser implements ParseAble {
 
     private static TextParser textParser;
 
-    public static final String PARAGRAPH_TAG = "(([.!?:]{1})|([\n]}\\s*[\n]))\\s*[\n]";
+    public static final String PARAGRAPH_TAG = RegexConst.PARAGRAPH_TAG;
     //("\\s*.*// ([(){};," +"+-=&\"\']+)\\s*[\n]");
 
-    private ParagraphParser parant;
+    private ParseAble toParser;
 
-    private TextParser(ParagraphParser parant) {
-        this.parant = parant;
+    private TextParser(ParseAble toParser) {
+        this.toParser = toParser;
     }
 
-    public static TextParser getTexParser(ParagraphParser parant) {
+    public static TextParser getTexParser(ParseAble toParser) {
         if (textParser == null) {
-            textParser = new TextParser(parant);
+            textParser = new TextParser(toParser);
         }
         return textParser;
     }
@@ -55,8 +55,8 @@ public class TextParser implements ParseAble {
             }
             //ParagraphParser is called
             if (paragraph instanceof TextParagraph) {
-                if (parant != null) {
-                    parant.parse(paragraphs[i], paragraph);
+                if (toParser != null) {
+                    toParser.parse(paragraphs[i], paragraph);
                 }
             } else {
                 ((ListingParagraph) paragraph).setListing(paragraphs[i]);

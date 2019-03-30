@@ -35,7 +35,7 @@ public class ShowSentencesByLengthTest {
                 "I want to be a good developer otherwise" + "\n";
 
         Text textInstance = new Text();
-        SentenceParser sentenceParser = SentenceParser.getSentenceParser();
+        SentenceParser sentenceParser = SentenceParser.getSentenceParser(null);
         ParagraphParser paragraphParser = ParagraphParser.getParagraphParser(sentenceParser);
         TextParser textParser = TextParser.getTexParser(paragraphParser);
 
@@ -62,7 +62,7 @@ public class ShowSentencesByLengthTest {
                 "Test?" + "\n";
 
         Text textInstance = new Text();
-        SentenceParser sentenceParser = SentenceParser.getSentenceParser();
+        SentenceParser sentenceParser = SentenceParser.getSentenceParser(null);
         ParagraphParser paragraphParser = ParagraphParser.getParagraphParser(sentenceParser);
         TextParser textParser = TextParser.getTexParser(paragraphParser);
 

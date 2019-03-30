@@ -10,17 +10,17 @@ public class ParagraphParser implements ParseAble {
 
     private static ParagraphParser paragraphParser;
 
-    public static final String SENTENCE_TAG = "[.!?] ";
+    public static final String SENTENCE_TAG =  RegexConst.SENTENCE_TAG;
 
-    private SentenceParser root;
+    private ParseAble toParser;
 
-    private ParagraphParser(SentenceParser root) {
-        this.root = root;
+    private ParagraphParser(ParseAble toParser) {
+        this.toParser = toParser;
     }
 
-    public static ParagraphParser getParagraphParser(SentenceParser root){
+    public static ParagraphParser getParagraphParser(ParseAble toParser){
         if (paragraphParser == null) {
-            paragraphParser = new ParagraphParser(root);
+            paragraphParser = new ParagraphParser(toParser);
         }
         return paragraphParser;
     }
@@ -46,8 +46,8 @@ public class ParagraphParser implements ParseAble {
                 e.printStackTrace();
             }
             // SentencesParser is called
-            if (root != null) {
-                root.parse(sentences[i], sentence);
+            if (toParser != null) {
+                toParser.parse(sentences[i], sentence);
             }
 
             i++;

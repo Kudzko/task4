@@ -28,6 +28,9 @@ public class ShowSentencesByLength extends AbstractOperation {
         sentences.sort(comparator);
         StringBuilder stringBuilder = new StringBuilder();
 
+        stringBuilder.append("\nSentences sorted by  " +
+                comparator.getClass().getName() + ":\n");
+
         for (int i = 0; i < sentences.size(); i++) {
             stringBuilder.append("Sentence " + i + ":\n");
             stringBuilder.append(sentences.get(i));

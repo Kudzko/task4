@@ -8,15 +8,17 @@ import java.util.regex.Pattern;
 
 public class SentenceParser implements ParseAble {
     private static SentenceParser sentenceParser;
-    public static final String WORD_TAG = "(([ ])|([,;] )|([\n]))";
+    public static final String WORD_TAG =  RegexConst.WORD_TAG;
 
-    private SentenceParser() {
+    private ParseAble toParser;
 
+    public SentenceParser(ParseAble toParser) {
+        this.toParser = toParser;
     }
 
-    public static SentenceParser getSentenceParser(){
+    public static SentenceParser getSentenceParser(ParseAble toParser){
         if (sentenceParser == null){
-            sentenceParser = new SentenceParser();
+            sentenceParser = new SentenceParser(toParser);
         }
         return sentenceParser;
     }
@@ -41,6 +43,11 @@ public class SentenceParser implements ParseAble {
                 sentence.addElement(word);
             } catch (MismatchTypesException e) {
                 e.printStackTrace();
+            }
+
+            // SentencesParser is called
+            if (toParser != null) {
+                toParser.parse(words[i], sentence);
             }
 
             i++;

@@ -28,6 +28,9 @@ public class ShowSentencesByAmountWords extends AbstractOperation {
         sentences.sort(comparator);
         StringBuilder stringBuilder = new StringBuilder();
 
+        stringBuilder.append("\nSentences in order with comparator " +
+                comparator.getClass().getName() + ":\n");
+
         for (int i = 0; i < sentences.size(); i++) {
             stringBuilder.append("Sentence " + (i + 1) + ":\n");
             stringBuilder.append(sentences.get(i));

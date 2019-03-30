@@ -27,12 +27,13 @@ public class ListingParagraph extends Paragraph {
 
     @Override
     public void addElement(TextElement element) throws MismatchTypesException {
+        throw new UnsupportedOperationException();
 //log
     }
 
     @Override
-    public Object getChild(int index) {
-        return listing;
+    public TextElement getChild(int index) {
+        throw new UnsupportedOperationException();
     }
 
     @Override

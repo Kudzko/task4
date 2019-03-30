@@ -2,7 +2,7 @@ package by.epam.javawebtraining.kudzko.task04.model.entity;
 
 import by.epam.javawebtraining.kudzko.task04.model.entity.exception.logicexception.MismatchTypesException;
 
-public interface TextElement {
+public interface TextElement<T> {
 
     /**
      * adds an element to the List<> of the instance
@@ -17,7 +17,7 @@ public interface TextElement {
      * @param index
      * @return element of appropriate type witch contains in instance
      */
-    Object getChild(int index);
+    TextElement getChild(int index);
 
     /**
      *
